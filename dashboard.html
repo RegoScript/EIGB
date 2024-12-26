@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Universitaire</title>
     <link rel="stylesheet" href="style.css">
-    <title>Plateforme universitaire - EIGB</title>
-
 </head>
-
 <body>
-    <header>
-        <h1>Plateforme universitaire - EIGB</h1>
-        <p>Bienvenue sur la plateforme dédiée aux étudiants et professeurs de l'EIGB</p>
-    </header>
-    <nav>
-        <a href="/login">Connexion</a>
-        <a href="/register">Inscription</a>
-        <a href="/dashboard">Tableau de bord</a>
-        <a href="/courses">Cours</a>
-        <a href="/calendar">Calendrier</a>
-    </nav>
-    <section id="dashboard" class="container">
-        <h2>Tableau de bord</h2>
-        <div class="dashboard">
-          <div class="card">
-            <h3>Mes cours</h3>
-            <p>Accédez aux cours et supports pédagogiques de votre semestre.</p>
-          </div>
-          <div class="card">
-            <h3>Devoirs à rendre</h3>
-            <p>Consultez les échéances et soumettez vos travaux.</p>
-          </div>
-          <div class="card">
-            <h3>Examens</h3>
-            <p>Préparez-vous et accédez aux sujets d'examens précédents.</p>
-          </div>
-          <div class="card">
-            <h3>Notifications</h3>
-            <p>Restez informé des actualités et mises à jour importantes.</p>
-          </div>
+    <!-- Toolbar pour Notifications -->
+    <div class="toolbar">
+        <p>Notification importante : La date limite pour les devoirs a été étendue au 20 janvier.</p>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            EIGB
         </div>
-      </section>
-    
-      <!-- Section des cours -->
-      <section id="courses" class="container">
-        <h2>Cours disponibles</h2>
-        <p>Consultez le catalogue des cours disponibles pour votre filière.</p>
-      </section>
-    
-      <!-- Section du calendrier -->
-      <section id="calendar" class="container">
-        <h2>Calendrier</h2>
-        <p>Planifiez vos activités académiques grâce à notre calendrier intégré.</p>
-      </section>
+        <ul class="menu">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Mes Cours</a></li>
+            <li><a href="#">Devoirs</a></li>
+            <li><a href="#">Ressources</a></li>
+        </ul>
+    </nav>
 
-    <footer>
-        &copy; 2024 Plateforme universitaire - EIGB. Tous droits réservés.
-    </footer>
+    <!-- Banner -->
+    <div class="banner">
+        <img src="./assets/img/hab10.jpg" alt="Banner Image">
+        <div class="slogan">
+            <h1>Bienvenue dans votre plateforme universitaire</h1>
+            <p>Explorez vos cours, vos devoirs et bien plus encore.</p>
+        </div>
+    </div>
+
+    <!-- Section principale -->
+    <div class="main-content">
+        <section class="overview">
+            <div class="card">
+                <h3>Cours Inscrits</h3>
+                <ul>
+                    <li>Mathématiques 101</li>
+                    <li>Physique 202</li>
+                    <li>Informatique 303</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Devoirs à Rendre</h3>
+                <ul>
+                    <li>Math 101 - 15 janvier</li>
+                    <li>Physique 202 - 20 janvier</li>
+                    <li>Informatique 303 - 25 janvier</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Notifications</h3>
+                <ul>
+                    <li>Réunion de révision le 10 janvier à 14h.</li>
+                    <li>La date limite des devoirs a été prolongée.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="quick-access">
+            <h3>Accès Rapide</h3>
+            <div class="links">
+                <a href="#">Ressources Cours</a>
+                <a href="#">Notes et Examens</a>
+                <a href="#">Calendrier Académique</a>
+            </div>
+        </section>
+    </div>
 </body>
-
 </html>
