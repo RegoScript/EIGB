@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Universitaire</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+        }
+
+        .navbar .logo img {
+            width: 60px;
+            height: 60px;
+
+        }
+
+        /* Section équipe des professeurs */
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .prof-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .prof-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .prof-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .prof-card .info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .prof-card .info h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .prof-card .info p {
+            font-size: 0.95rem;
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .prof-card .info .anciennete {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .courses-section {
+            padding: 40px 0px;
+            border-radius: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #202020;
+            margin-bottom: 30px;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            /* 2 colonnes sur grands écrans, 1 sur petits */
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 58px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background-color: rgb(247, 247, 247);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Pour la réactivité */
+        @media (max-width: 768px) {
+            .courses-container {
+                grid-template-columns: 1fr;
+                /* Une seule colonne sur petits écrans */
+            }
+        }
+
+        .newsletter-section {
+            padding: 20px;
+            background-color: #f7fafc;
+            /* Fond clair */
+            border-radius: 8px;
+
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .section-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .newsletter-form button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #3182ce;
+            /* Bleu */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #2b6cb0;
+            /* Bleu foncé au survol */
+        }
+
+        /* Pour aligner textarea et bouton en une ligne dans une version plus compacte */
+        @media screen and (min-width: 768px) {
+            .newsletter-form {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .newsletter-form textarea {
+                flex: 1;
+                margin-right: 10px;
+            }
+
+            .newsletter-form button {
+                align-self: center;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #002249;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Contenu principal du footer */
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        /* Logo du footer */
+        .footer-logo h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo p {
+            font-size: 1rem;
+            color: #a0aec0;
+        }
+
+        /* Liens dans le footer */
+        .footer-links h3,
+        .footer-social h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Liste des liens */
+        .footer-links ul,
+        .footer-social ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-links li,
+        .footer-social li {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links a,
+        .footer-social a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover,
+        .footer-social a:hover {
+            color: #63b3ed;
+        }
+
+        /* Icônes des réseaux sociaux */
+        .footer-social .social-icon {
+            display: inline-block;
+            margin: 0 10px;
+            color: #cbd5e0;
+            /* Couleur claire */
+            transition: color 0.3s ease-in-out;
+        }
+
+        .footer-social .social-icon:hover {
+            color: #63b3ed;
+            /* Couleur au survol */
+        }
+
+        /* Si les icônes ne sont toujours pas visibles, essayez d'ajouter un fond temporaire */
+        .footer-social .social-icon svg {
+            fill: #cbd5e0;
+            /* Assurez-vous que les icônes sont bien colorées */
+        }
+
+        /* Section inférieure du footer */
+        .footer-bottom {
+            background-color: #ffffff;
+            color: #5c5c5c;
+            font-size: 1rem;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-logo {
+                margin-bottom: 1rem;
+            }
+
+            .footer-links,
+            .footer-social {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Toolbar pour Notifications -->
+    <div class="toolbar">
+        <p>Notification importante : La date limite pour les devoirs a été étendue au 20 janvier.</p>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/img/logo_eig-.png" alt="Logo">
+        </div>
+        <ul class="menu">
+            <li>
+                <div class="user-dropdown">
+                    <!-- Icône utilisateur -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="user-icon" tabindex="0">
+                      <path d="M12 2a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm0 14c-4 0-6 2-6 4v2h12v-2c0-2-2-4-6-4z"/>
+                    </svg>
+                
+                    <!-- Menu déroulant -->
+                    <div class="dropdown-menu">
+                      <a href="/dashboard.html" style="border-bottom: 1px solid rgb(201, 197, 197); margin-bottom: 10px;">Tableau de board</a>
+                      <a href="#" style="border-bottom: 1px solid rgb(201, 197, 197); margin-bottom: 10px;">Profil</a>
+                      <a href="#" style="border-bottom: 1px solid rgb(201, 197, 197); margin-bottom: 10px;">Se déconnecter</a>
+                    </div>
+                  </div>
+                  
+                  
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                  </svg> -->
+                  
+            </li>
+            <!-- <li><a href="/Cours.html">Catalogue des cours</a></li>
+            <li><a href="#">Devoirs</a></li>
+            <li><a href="#">Ressources</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="slogan">
+            <h1>Bienvenue dans votre plateforme universitaire</h1>
+            <p>Explorez vos cours, vos devoirs et bien plus encore.</p>
+        </div>
+        <img src="./assets/img/IMG-20241226-WA0045.jpg" alt="Banner Image">
+    </div>
+
+    <!-- Section principale -->
+    <div class="main-content">
+        <section class="courses-section">
+            <h1 class="section-title">Nos Filières</h1>
+            <div class="courses-container">
+                <div class="card" style="border:1px solid #01ff09">
+                    <h3>Développement Web et Mobile</h3>
+                    <p>Apprenez à créer des sites web modernes et des applications mobiles performantes en utilisant les
+                        technologies les plus récentes comme HTML, CSS, JavaScript, Vue.js et React Native.</p>
+                </div>
+                <div class="card" style="border:1px solid #00a2ff">
+                    <h3>Sécurité Informatique et Cyberdéfense</h3>
+                    <p>Formez-vous aux stratégies de protection des données et devenez expert en détection et prévention
+                        des cyberattaques.</p>
+                </div>
+                <div class="card" style="border:1px solid #ff00d4">
+                    <h3>Intelligence Artificielle et Big Data</h3>
+                    <p>Explorez les bases de l’IA, du Machine Learning et de l’analyse des grandes données pour résoudre
+                        des problématiques complexes.</p>
+                </div>
+                <div class="card" style="border:1px solid #f5e400">
+                    <h3>Réseaux et Administration Systèmes</h3>
+                    <p>Développez des compétences en gestion des infrastructures informatiques et en administration de
+                        serveurs et réseaux.</p>
+                </div>
+                <div class="card" class="card" style="border:1px solid #0f0f0f">
+                    <h3>Conception de Jeux Vidéo</h3>
+                    <p>Découvrez les techniques de développement de jeux vidéo, de la conception graphique au codage
+                        avec des moteurs comme Unity et Unreal Engine.</p>
+                </div>
+                <div class="card" style="border:1px solid #ff0000">
+                    <h3>Informatique de Gestion</h3>
+                    <p>Apprenez à créer des solutions logicielles adaptées aux besoins des entreprises pour optimiser la
+                        gestion des ressources et des processus.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section Statistiques -->
+        <section class="statistics">
+            <h1 class="statistics-title">Statistiques</h1>
+            <div class="statistics-container">
+                <div class="statistics-card">
+                    <div class="icon-container">
+                        <img src="path-to-icon/students-icon.svg" alt="Étudiants">
+                    </div>
+                    <h3>Étudiants Inscrits</h3>
+                    <p class="value">1500</p>
+                </div>
+                <div class="statistics-card">
+                    <div class="icon-container">
+                        <img src="path-to-icon/courses-icon.svg" alt="Cours">
+                    </div>
+                    <h3>Cours Offerts</h3>
+                    <p class="value">75</p>
+                </div>
+                <div class="statistics-card">
+                    <div class="icon-container">
+                        <img src="path-to-icon/homework-icon.svg" alt="Devoirs">
+                    </div>
+                    <h3>Devoirs Soumis</h3>
+                    <p class="value">1200</p>
+                </div>
+                <div class="statistics-card">
+                    <div class="icon-container">
+                        <img src="path-to-icon/teachers-icon.svg" alt="Profs">
+                    </div>
+                    <h3>Profs Disponibles</h3>
+                    <p class="value">50</p>
+                </div>
+            </div>
+        </section>
+        
+
+
+
+        <!-- Section Professeurs -->
+        <section class="team-section">
+            <h1 style="text-align: center; font-size: 2em;">Teams des Professeurs</h1>
+            <div class="team-container">
+                <div class="prof-card">
+                    <img src="https://via.placeholder.com/250x150" alt="Photo de M. Dupont">
+                    <div class="info">
+                        <h3>M. Dupont</h3>
+                        <p><strong>Matière:</strong> Programmation Web</p>
+                        <p class="anciennete">Ancienneté: 10 ans</p>
+                    </div>
+                </div>
+                <div class="prof-card">
+                    <img src="https://via.placeholder.com/250x150" alt="Photo de Mme. Martin">
+                    <div class="info">
+                        <h3>Mme. Martin</h3>
+                        <p><strong>Matière:</strong> Bases de Données</p>
+                        <p class="anciennete">Ancienneté: 8 ans</p>
+                    </div>
+                </div>
+                <div class="prof-card">
+                    <img src="https://via.placeholder.com/250x150" alt="Photo de M. Lemoine">
+                    <div class="info">
+                        <h3>M. Lemoine</h3>
+                        <p><strong>Matière:</strong> Calcul Différentiel</p>
+                        <p class="anciennete">Ancienneté: 5 ans</p>
+                    </div>
+                </div>
+                <div class="prof-card">
+                    <img src="https://via.placeholder.com/250x150" alt="Photo de Mme. Dufresne">
+                    <div class="info">
+                        <h3>Mme. Dufresne</h3>
+                        <p><strong>Matière:</strong> Algèbre Linéaire</p>
+                        <p class="anciennete">Ancienneté: 12 ans</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section">
+            <h1 class="section-title">Newsletter</h1>
+            <p class="section-description">
+                Vous avez des questions, des suggestions ou des commentaires ? N'hésitez pas à nous les envoyer !
+            </p>
+            <form class="newsletter-form">
+                <textarea name="message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+
+
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>EIGB</h2>
+                    <p>École d'Informatique et de Gestion des Affaires</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Suivez-nous</h3>
+                    <ul>
+                        <li><a href="#" class="social-icon facebook" title="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="20"
+                                    height="20">
+                                    <path
+                                        d="M12 0C5.372 0 0 5.372 0 12c0 5.993 4.388 10.973 10.125 11.837v-8.348h-3.046v-3.49h3.046v-2.592c0-3.029 1.79-4.713 4.534-4.713 1.313 0 2.688.243 2.688.243v3.313h-1.5c-1.157 0-1.518.736-1.518 1.487v2.553h3.046l-.486 3.49h-2.56v8.348c5.017-1.418 8.875-5.89 8.875-11.837 0-6.628-5.372-12-12-12z">
+                                    </path>
+                                </svg>
+                            </a></li>
+                        <li><a href="#" class="social-icon twitter" title="Twitter">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="20"
+                                    height="20">
+                                    <path
+                                        d="M23.643 4.937c-.884.391-1.83.656-2.822.776a4.95 4.95 0 0 0 2.163-2.723c-.95.56-2.01.967-3.14 1.184a4.91 4.91 0 0 0-8.587 4.48A13.927 13.927 0 0 1 1.671 3.149a4.904 4.904 0 0 0 1.522 6.547A4.891 4.891 0 0 1 .64 8.76v.064c.057 2.302 1.628 4.24 3.819 4.692a4.932 4.932 0 0 1-2.224.085c.627 1.96 2.445 3.384 4.604 3.423a9.877 9.877 0 0 1-6.103 2.106c-.397 0-.787-.023-1.17-.069 2.188 1.395 4.793 2.207 7.528 2.207 9.046 0 14.009-7.499 14.009-13.986 0-.21 0-.421-.015-.63a9.903 9.903 0 0 0 2.476-2.546z">
+                                    </path>
+                                </svg>
+                            </a></li>
+                        <li><a href="#" class="social-icon linkedin" title="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="20"
+                                    height="20">
+                                    <path
+                                        d="M22.23 0h-20.46c-1.033 0-1.87.837-1.87 1.87v20.46c0 1.033.837 1.87 1.87 1.87h20.46c1.033 0 1.87-.837 1.87-1.87v-20.46c0-1.033-.837-1.87-1.87-1.87zM7.12 20.44h-3.41v-12.35h3.41v12.35zm-1.7-14.01c-1.1 0-1.79-.74-1.79-1.66 0-.92.69-1.66 1.79-1.66 1.09 0 1.79.74 1.79 1.66 0 .92-.7 1.66-1.79 1.66zm14.67 14.01h-3.41v-6.11c0-1.46-.52-2.46-1.81-2.46-1.04 0-1.65.7-1.93 1.38-.1.24-.13.57-.13.9v6.29h-3.41v-12.35h3.41v1.46c.45-.69 1.26-1.46 2.7-1.46 1.99 0 3.47 1.29 3.47 4.08v6.35z">
+                                    </path>
+                                </svg>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EIGB - Tous droits réservés</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

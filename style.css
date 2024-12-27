@@ -1,9 +1,211 @@
 /* Style global */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #bbbbbb;
+  color: #000000;
+  padding: 0px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 30px 5px;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.sidebar li a {
+  color: #00b7ff;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar li:hover {
+  color: #00b7ff;
+}
+
+/* Appliquer un style spécifique lorsque l'élément est en focus (sélectionné au clavier) */
+.sidebar a:focus {
+  /* Ajoute une bordure à gauche de l'élément */
+  color: #00b7ff; /* Changer la couleur du texte */
+}
+
+.sidebar a:focus .icon {
+  color: #00b7ff; /* Change la couleur de l'icône lorsque l'élément est en focus */
+}
+
+.sidebar a:focus .tooltip {
+  background-color: #1D72B8; /* Change la couleur de la tooltip quand l'élément est en focus */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centre les items verticalement */
+}
+
+.menu-item {
+  position: relative;
+  margin: 15px 0;
+  /* Espacement entre les éléments */
+  display: flex;
+  flex-direction: column;
+  /* Aligne les éléments (icône et tooltip) verticalement */
+  justify-content: center;
+  /* Centre les icônes et tooltips */
+  align-items: center;
+  cursor: pointer;
+}
+.filieres .filiere {
+  margin-bottom: 20px;
+}
+
+.filiere h2 {
+  color: #333;
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.filiere p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+.filiere {
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #d6d6d6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+.filieres .filiere:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+border-left: 1px solid #ff0000;
+  border-right: 1px solid #002fff;
+  border-bottom: 1px solid #ff00aa;
+  border-radius: 0 0 10px 10px;
+  padding: 20px 20px 30px;
+  background-color: #f9f9f9;
+
+}
+.filieres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.voir-plus {
+  display: block;
+  text-align: center;
+  width: 100%; /* Bouton étendu à la largeur de la carte */
+  padding: 10px 0;
+  /* Couleur de fond */
+  color: #008cff; /* Couleur du texte */
+  text-decoration: none;
+  font-weight: 100;
+  border-radius: 40px;
+  border: 1px solid #d6d6d6;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.action-container {
+  display: flex;
+  justify-content: flex-end;
+  /* Place le lien à droite */
+}
+
+.voir-plus:hover {
+  text-decoration: none;
+  background-color: #e0eefa;
+}
+
+hr {
+  border: none;
+  border-top: 5px solid #0059ff;
+  margin: 20px 0 0;
+  border-radius: 50px;
+}
+.icon {
+  font-size: 2rem;
+  color: #0019a7;
+  /* Ajuste la couleur de l'icône */
+  transition: color 0.3s ease;
+}
+/* Conteneur principal */
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Icône utilisateur */
+.user-icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Menu déroulant */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 150px;
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #00063f;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Afficher le menu déroulant au clic */
+.user-dropdown:focus-within .dropdown-menu {
+  display: block;
 }
 
 /* Toolbar */
@@ -13,7 +215,7 @@ body {
   padding: 1px 20px;
   text-align: center;
   font-size: 12px;
-  font-weight:100;
+  font-weight: 100;
 }
 
 /* Navbar */
@@ -33,7 +235,7 @@ body {
 .navbar .menu {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .navbar .menu li {
@@ -42,7 +244,7 @@ body {
 
 .navbar .menu li a {
   text-decoration: none;
-  color: rgb(141, 141, 141);
+  color: rgb(0, 0, 0);
   font-size: 15px;
   padding: 2px;
   border-radius: 5px;
@@ -56,23 +258,23 @@ body {
 
 /* Banner */
 .banner {
-  position: relative;
-  text-align: center;
+  margin: 50px 0px;
+  display: flex;
+  justify-content: center; /* Centrer le contenu */
+  align-items: center; /* Aligner verticalement */
+  gap: 20px; /* Espace entre l'image et le texte */
 }
 
 .banner img {
-  width: 100%;
-  height: 500px;
+  width: 400px; /* Taille de l'image */
+  height: auto;
   object-fit: cover;
+  border-radius: 50px;
 }
 
 .banner .slogan {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: rgb(0, 36, 77);
-  text-shadow: 2px 2px 5px rgb(211, 144, 0);
+  max-width: 50%; /* Limiter la largeur du texte */
 }
 
 .banner .slogan h1 {
@@ -86,46 +288,10 @@ body {
 
 /* Section principale */
 .main-content {
-  padding: 80px 90px;
+  padding: 60px 90px;
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-/* Vue d'ensemble */
-.overview {
-  display: flex;
-  gap: 30px;
-  justify-content: space-between;
-}
-
-.card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-.card ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.card ul li {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Accès rapide */
@@ -141,21 +307,301 @@ body {
   margin-bottom: 20px;
 }
 
-.links {
-  display: flex;
-  gap: 20px;
+/* Section */
+.posts-section {
+  padding: 40px 20px;
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.links a {
-  background-color: #58a6ff;
-  color: white;
+/* Titre de la section */
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Liste des articles */
+.posts-list {
+  list-style: none;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+/* Article */
+.post-item {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.post-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Titre de l'article */
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0bc9e0;
+  margin: 0 0 10px 0;
+}
+
+/* Description de l'article */
+.post-description {
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+
+/* Date de publication */
+.post-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Lien de l'article */
+.post-link {
+  color: #0bc9e0;
+  font-size: 14px;
   text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+  margin-top: 10px;
+  transition: color 0.3s;
 }
 
-.links a:hover {
-  background-color: #2e85d6;
-  transform: translateY(-3px);
+.post-link:hover {
+  color: #0a97b5;
+  text-decoration: underline;
+}
+
+/* Séparateur */
+.post-divider {
+  border: none;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 20px 0 0 0;
+}
+
+/* Section */
+.overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Carte */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre de la carte */
+.card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+/* Liste des éléments */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.card ul li {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+/* Dernier élément sans marge */
+.card ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Section galerie */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Carte */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre de la carte */
+.card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+/* Liste des éléments */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.card ul li {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+/* Dernier élément sans marge */
+.card ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Conteneur des icônes */
+.icon-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Texte dans la carte */
+
+.progress-bar-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  margin-bottom: 20px;
+}
+
+.progress-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.filled {
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 10px 0 0 10px;
+}
+
+/* --------------------- */
+.statistics {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.statistics-title {
+  font-size: 2rem;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.statistics-container {
+  display: flex;
+  gap: 10px;
+}
+
+.statistics-card {
+  border-radius: 58px;
+  padding: 20px;
+  width: calc(25% - 20px); /* Quatre cartes sur grands écrans */
+  text-align: center;
+  transition: transform 0.3s ease; /* Suppression de l'ombre, mais on garde l'effet de déplacement */
+}
+
+.statistics-card:hover {
+  /* transform: translateY(-10px); */ /* Légère animation au survol */
+  box-shadow: 1px 1px 10px rgb(255, 0, 255); /* Ombre plus douce */
+  background-color: #ffffff;
+}
+
+.icon-container {
+  margin-bottom: 15px;
+}
+
+.icon-container img {
+  width: 50px; /* Taille des icônes */
+  height: auto;
+}
+
+.statistics-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.statistics-card .value {
+  font-size: 2rem;
+  color: #333; /* Couleur de texte plus sobre */
+  font-weight: bold;
+}
+
+/* Réactivité */
+@media (max-width: 768px) {
+  .statistics-card {
+    width: calc(50% - 20px); /* Deux cartes sur petits écrans */
+  }
+}
+
+@media (max-width: 480px) {
+  .statistics-card {
+    width: 100%; /* Une seule carte par ligne sur très petits écrans */
+  }
 }
